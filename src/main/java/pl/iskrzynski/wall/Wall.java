@@ -11,7 +11,13 @@ public class Wall implements Structure {
     private final List<Block> blocks;
 
     @Override
-    public Optional<Block> findBlockByColor(String color) {
+    public Optional<Block> findBlockByColor(String aColor) {
+        List<Block> blockList = new ArrayList<>(getFlatList());
+        for (Block block : blockList) {
+            if (aColor.equals(block.getColor())) {
+                return Optional.of(block);
+            }
+        }
         return Optional.empty();
     }
 
