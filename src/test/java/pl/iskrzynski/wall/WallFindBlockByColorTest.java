@@ -29,4 +29,9 @@ public class WallFindBlockByColorTest {
         assertThat(emptyWall.findBlockByColor("blue")).isEqualTo(emptyOptionalList);
         assertThat(noEmptyWall.findBlockByColor("red")).isEqualTo(emptyOptionalList);
        }
+    @Test
+    void shouldReturnOptionalBlock() {
+        assertThat((noEmptyWall.findBlockByColor("blue"))).isEqualTo(Optional.of(block1));
+        assertThat((noEmptyWall.findBlockByColor("green"))).isEqualTo(Optional.of(block2));
+    }
 }
