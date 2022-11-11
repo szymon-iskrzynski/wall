@@ -15,6 +15,8 @@ public class WallFindBlockByMaterialTest {
     Block block3 = buildBlock("blue", "steel");
     Block block4 = buildBlock("green", "steel");
     List<Block> blockList = List.of(block1,block2,block3,block4);
+    List<Block> woodBlockList = List.of(block1,block2);
+    List<Block> steelBlockList = List.of(block3,block4);
     Wall emptyWall = new Wall(new ArrayList<>());
     List<Block> emptyList = new ArrayList<>();
     Wall noEmptyWall = new Wall(blockList);
@@ -28,5 +30,16 @@ public class WallFindBlockByMaterialTest {
     @Test
     void shouldReturnEmptyListMaterialNoExistInWall() {
         assertThat(noEmptyWall.findBlocksByMaterial("plastic")).isEqualTo(emptyList);
+    }
+
+    @Test
+    void shouldReturnMaterialList() {
+        assertThat(noEmptyWall.findBlocksByMaterial("steel").size()).isEqualTo(steelBlockList.size());
+        assertThat(noEmptyWall.findBlocksByMaterial("steel").get(0)).isIn(steelBlockList);
+        assertThat(noEmptyWall.findBlocksByMaterial("steel").get(1)).isIn(steelBlockList);
+
+        assertThat(noEmptyWall.findBlocksByMaterial("wood").size()).isEqualTo(woodBlockList.size());
+        assertThat(noEmptyWall.findBlocksByMaterial("wood").get(0)).isIn(woodBlockList);
+        assertThat(noEmptyWall.findBlocksByMaterial("wood").get(1)).isIn(woodBlockList);
     }
 }
