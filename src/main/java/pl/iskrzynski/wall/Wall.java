@@ -1,10 +1,13 @@
 package pl.iskrzynski.wall;
 
+import lombok.AllArgsConstructor;
+
 import java.util.List;
 import java.util.Optional;
 
+@AllArgsConstructor
 public class Wall implements Structure {
-    private List<Block> blocks;
+    private final List<Block> blocks;
 
     @Override
     public Optional<Block> findBlockByColor(String color) {
