@@ -22,7 +22,7 @@ public class Wall implements Structure {
 
     @Override
     public int count() {
-        return 0;
+        return getFlatList().size();
     }
 
     private List<Block> getFlatList() {
