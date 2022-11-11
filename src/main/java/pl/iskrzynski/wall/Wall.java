@@ -22,8 +22,15 @@ public class Wall implements Structure {
     }
 
     @Override
-    public List<Block> findBlocksByMaterial(String material) {
-        return null;
+    public List<Block> findBlocksByMaterial(String aMaterial) {
+        List<Block> blockList = new ArrayList<>(getFlatList());
+        List<Block> returnList = new ArrayList<>();
+        for (Block block : blockList) {
+            if(block.getMaterial().equals(aMaterial)){
+                returnList.add(block);
+            }
+        }
+        return returnList;
     }
 
     @Override
